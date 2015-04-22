@@ -12,7 +12,7 @@
 5. mkswap /dev/sdaY
 6. swapon /dev/sdaY
 7. mkfs.ext4 /dev/sdaX 
-  1. Make sure you are formatting the right partition! _There is NO turning back from this point!_. If yes — enter 'y' when promted.
+  1. Make sure you are formatting the right partition! **There is NO turning back from this point!**. If yes — enter 'y' when promted.
 8. mount /dev/sdaX /mnt
 9. pacstrap /mnt base base-devel
   1. Go take a cup of tea. It takes time.
