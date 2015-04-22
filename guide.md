@@ -1,14 +1,14 @@
 # Guide
-1. wifi-menu
+1. Make sure you know what your to-be-linux and swap partitions are.
+  1. We will name them /dev/sdaX — linux partion and /dev/sdaY — swap partition.
+2. Load arch-linux from your flash drive. Whether it is USB stick or CD-R image.
+3. Upon loading of the live image execute next commands.
+4. wifi-menu
   1. Choose your network. OK.
   2. OK.
   3. Enter your password for the network. OK.
   4. Wait a little till 'root@archlinuxiso' caption appears.
   5. Don't continue if you cannot connect to a network.
-2. Make sure you know what your to-be-linux and swap partitions are.
-  1. We will name them /dev/sdaX — linux partion and /dev/sdaY — swap partition.
-3. Load arch-linux from your flash drive. Whether it is USB stick or CD-R image.
-4. Upon loading of the live image execute next commands.
 5. mkswap /dev/sdaY
 6. swapon /dev/sdaY
 7. mkfs.ext4 /dev/sdaX 
