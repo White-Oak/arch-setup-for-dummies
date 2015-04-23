@@ -26,22 +26,26 @@
 15. `passwd IMYA`
   1. Enter password for your user.
 16. `nano /etc/sudoers`
-  1. Uncomment ...
+  1. Uncomment wheel ALL=ALL ...
   2. Save. (Ctrl-X, y, enter)
 17. `grub-install --target=i386-pc --recheck --debug /dev/sda`
 18. `grub-mkconfig -o /boot/grub/grub.cfg`
 19. `exit`
 20. `reboot`
-21. Take your flash drive out.
+21. Take your flash drive out!
 22. Login under your user.
-23. You now have clean Arch installation. Next steps are for X setup with Plasma 5.
-24. `sudo wifi-menu`
-25. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake ttf-dejavu ttf-bitstream-vera`
+
+You now have clean Arch installation. Next steps are for X setup with Plasma 5.
+23. `sudo wifi-menu`
+25. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake kdebase-dolphin chromium`
   1. When asked to choose between nvidia drivers. Choose `nvidia-libgl`.
-26. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
-27. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
 26. `sudo systemctl enable sddm.service`
 27. `sudo reboot`
 28. Login under your user.
+
+You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser)
+28. Run yakuake or press F12.
 29. `sudo wifi-menu`
+26. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
+27. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
 30.
