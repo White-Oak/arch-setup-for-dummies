@@ -76,4 +76,26 @@ You now have a clean Arch installation with several applications and yaourt and 
 
 Next steps will guide you through the installion process of an infinality bundle.
 
-30. 
+30. `sudo nano /etc/pacman.conf`
+  1. Add following lines: 
+  ```
+[infinality-bundle]
+Server = http://bohoomil.com/repo/$arch
+
+[infinality-bundle-multilib]
+Server = http://bohoomil.com/repo/multilib/$arch
+
+[infinality-bundle-fonts]
+Server = http://bohoomil.com/repo/fonts
+  ```
+  2. Uncomment following lines: 
+  ```
+[multilib] 
+Include = /etc/pacman.d/mirrorlist
+  ```
+31. `dirmngr < /dev/null`
+32. `sudo pacman-key -r 962DDE58`
+33. `sudo pacman-key --lsign-key 962DDE58`
+34. `sudo pacman -Syy infinality-bundle-multilib`
+35. `sudo reboot`
+36. Login under your user.
