@@ -34,16 +34,12 @@
 20. `reboot`
 21. Take your flash drive out.
 22. Login under your user.
-23. You now have clean Arch installation. Next steps are for X setup.
+23. You now have clean Arch installation. Next steps are for X setup with Plasma 5.
 24. `sudo wifi-menu`
-25. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm xfce4 xarchiver zip unzip firefox`
+25. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake ttf-dejavu ttf-bitstream-vera`
   1. When asked to choose between nvidia drivers. Choose `nvidia-libgl`.
 26. `sudo systemctl enable sddm.service`
 27. `sudo reboot`
 28. Login under your user.
 29. `sudo wifi-menu`
-30. You now have clean Arch setup with basic XFCE stuff.
-31. Go to http://nale12.deviantart.com/art/Flattastic-11-03-2014-424913255 and download ZIP archive.
-32. Unzip it contents into ~/.themes
-33. Choose your theme in XFCE -> Appearance and XFCE -> Window Manager
-34. To be continued.
+30.
