@@ -34,12 +34,16 @@
 20. `reboot`
 21. Take your flash drive out.
 22. Login under your user.
-22. `sudo pacman -S grub xorg-server xorg-server-utils xorg-apps nvidia sddm xfce4 xarchiver zip unzip firefox`
+23. You now have clean Arch installation. Next steps are for X setup.
+24. `sudo wifi-menu`
+25. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm xfce4 xarchiver zip unzip firefox`
   1. When asked to choose between nvidia drivers. Choose `nvidia-libgl`.
-23. `sudo systemctl enable sddm.service`
-24. `sudo reboot`
-25. Login under your user.
-26. Go to http://nale12.deviantart.com/art/Flattastic-11-03-2014-424913255 and download ZIP archive.
-27. Unzip it contents into ~/.themes
-28. Choose your theme in XFCE -> Appearance and XFCE -> Window Manager
-29. To be continued.
+26. `sudo systemctl enable sddm.service`
+27. `sudo reboot`
+28. Login under your user.
+29. `sudo wifi-menu`
+30. You now have clean Arch setup with basic XFCE stuff.
+31. Go to http://nale12.deviantart.com/art/Flattastic-11-03-2014-424913255 and download ZIP archive.
+32. Unzip it contents into ~/.themes
+33. Choose your theme in XFCE -> Appearance and XFCE -> Window Manager
+34. To be continued.
