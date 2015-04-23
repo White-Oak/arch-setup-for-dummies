@@ -43,9 +43,22 @@ You now have clean Arch installation. Next steps are for X setup with Plasma 5.
 27. `sudo reboot`
 28. Login under your user.
 
-You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser)
+You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser).
+It is better to perform them from Plasma, web browser (i.e. Chromium) and terminal with copy-paste supported (i.e. yakuake).
 28. Run yakuake or press F12.
 29. `sudo wifi-menu`
+30. `mkdir aurs-tmp`
+31. `cd aurs-tmp`
+32. Install package-query from arch AURs:
+  1. `wget https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz`
+  2. `tar -xvzf package-query.tar.gz`
+  3. `cd package-query`
+  4. `makepkg -si`
+33. install yaourt packages:
+  1. `wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz`
+  2. `tar -xvzf package-query.tar.gz`
+  3. `cd package-query`
+  4. `makepkg -si`
 26. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
 27. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
 30.
