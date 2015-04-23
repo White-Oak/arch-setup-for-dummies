@@ -39,6 +39,7 @@
 25. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake ttf-dejavu ttf-bitstream-vera`
   1. When asked to choose between nvidia drivers. Choose `nvidia-libgl`.
 26. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
+27. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
 26. `sudo systemctl enable sddm.service`
 27. `sudo reboot`
 28. Login under your user.
