@@ -16,11 +16,10 @@
 8. `mount /dev/sdaX /mnt`
 9. `pacstrap /mnt base base-devel`
   1. Go take a cup of tea. It takes time.
-10. `genfstab -p /mnt >> /etc/fstab`
+10. `genfstab -p /mnt >> /mnt/etc/fstab`
 11. `arch-chroot /mnt`
   1. If promted with sh-4.3 — you are on the right way.
-12. `pacman -S grub os-prober dialog wpa_supplicant nvidia xorg-server xorg-server-utils xorg-apps fish sddm i3 dmenu`
-  1. Press enter on all promts except one: when asked to choose between nvidia drivers. Choose `libgl-nvidia`.
+12. `pacman -S grub os-prober dialog wpa_supplicant fish`
 13. `useradd -m -G wheel -s /usr/bin/fish IMYA`
 14. `passwd`
   1. Enter password for root.
@@ -33,4 +32,10 @@
 18. `grub-mkconfig -o /boot/grub/grub.cfg`
 19. `exit`
 20. `reboot`
-21. to be continued.
+21. Take your flash drive out.
+22. Login under your user.
+22. `sudo pacman -S grub xorg-server xorg-server-utils xorg-apps nvidia sddm xfce4 xarchiver zip unzip firefox`
+  1. When asked to choose between nvidia drivers. Choose `nvidia-libgl`.
+23. `sudo systemctl enable sddm.service`
+24. `sudo reboot`
+  
