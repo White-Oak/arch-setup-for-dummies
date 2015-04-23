@@ -38,4 +38,8 @@
   1. When asked to choose between nvidia drivers. Choose `nvidia-libgl`.
 23. `sudo systemctl enable sddm.service`
 24. `sudo reboot`
-  
+25. Login under your user.
+26. Go to http://nale12.deviantart.com/art/Flattastic-11-03-2014-424913255 and download ZIP archive.
+27. Unzip it contents into ~/.themes
+28. Choose your theme in XFCE -> Appearance and XFCE -> Window Manager
+29. To be continued.
