@@ -38,17 +38,19 @@
 
 ## X and Plasma setup
 You now have a clean Arch installation. Next steps are for X setup with Plasma 5.
+
 23. `sudo wifi-menu`
-25. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake kdebase-dolphin chromium`
+24. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake kdebase-dolphin chromium`
   1. When asked to choose between nvidia drivers. Choose `nvidia-libgl`.
-26. `sudo systemctl enable sddm.service`
-27. `sudo reboot`
-28. Login under your user.
+25. `sudo systemctl enable sddm.service`
+26. `sudo reboot`
+27. Login under your user.
 
 ## Yaourt and custom fonts installation
 You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser).
 
 It is better to perform next steps using Plasma, web browser (i.e. Chromium) and terminal with copy-paste feature supported (i.e. yakuake).
+
 28. Run yakuake or press F12.
 29. `sudo wifi-menu`
 30. `mkdir aurs-tmp`
@@ -73,4 +75,5 @@ It is better to perform next steps using Plasma, web browser (i.e. Chromium) and
 You now have a clean Arch installation with several applications and yaourt and custom fonts installed.
 
 Next steps will guide you through the installion process of an infinality bundle.
+
 30. 
