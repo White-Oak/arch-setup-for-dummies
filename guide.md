@@ -16,10 +16,11 @@
 8. `mount /dev/sdaX /mnt`
 9. `pacstrap /mnt base base-devel`
   1. Go take a cup of tea. It takes time.
-10. `genfstab /mnt >> /etc/fstab`
+10. `genfstab -p /mnt >> /etc/fstab`
 11. `arch-chroot /mnt`
   1. If promted with sh-4.3 — you are on the right way.
-12. `pacman -S grub os-prober dialog wpa_supplicant nvidia xorg-server xorg-server-utils xorg-apps sddm fish`
+12. `pacman -S grub os-prober dialog wpa_supplicant nvidia xorg-server xorg-server-utils xorg-apps fish sddm i3 dmenu`
+  1. Press enter on all promts except one: when asked to choose between nvidia drivers. Choose `libgl-nvidia`.
 13. `useradd -m -G wheel -s /usr/bin/fish IMYA`
 14. `passwd`
   1. Enter password for root.
@@ -27,6 +28,7 @@
   1. Enter password for your user.
 16. `nano /etc/sudoers`
   1. Uncomment ...
+  2. Save. (Ctrl-X, y, enter)
 17. `grub-install --target=i386-pc --recheck --debug /dev/sda`
 18. `grub-mkconfig -o /boot/grub/grub.cfg`
 19. `exit`
