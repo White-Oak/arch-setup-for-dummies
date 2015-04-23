@@ -27,7 +27,10 @@
 15. `passwd IMYA`
   1. Enter password for your user.
 16. `nano /etc/sudoers`
-  1. Uncomment wheel ALL=ALL ...
+  1. Uncomment next line:
+  ```
+%wheel ALL=(ALL) ALL
+  ```
   2. Save. (Ctrl-X, y, enter)
 17. `grub-install --target=i386-pc --recheck --debug /dev/sda`
 18. `grub-mkconfig -o /boot/grub/grub.cfg`
