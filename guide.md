@@ -77,7 +77,7 @@ EndSection
   5. `cd ..`
 34. install yaourt packages:
   1. `wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz`
-  2. `tar -xvzf package-query.tar.gz`
+  2. `tar -xvzf yaourt.tar.gz`
   3. `cd yaourt`
   4. `makepkg -si`
   5. `cd ..`
@@ -109,10 +109,11 @@ Server = http://bohoomil.com/repo/fonts
 [multilib] 
 Include = /etc/pacman.d/mirrorlist
   ```
-41. `dirmngr < /dev/null`
+41. `sudo dirmngr < /dev/null`
 42. `sudo pacman-key -r 962DDE58`
 43. `sudo pacman-key --lsign-key 962DDE58`
 44. `sudo pacman -Syy infinality-bundle-multilib`
   1. Install `infinality-bundle` if you are not using x86_64 architecture.
+  2. Press 'y' when promted about conflicts.
 45. `sudo reboot`
 46. Login under your user.
