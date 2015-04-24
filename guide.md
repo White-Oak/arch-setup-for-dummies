@@ -52,6 +52,17 @@ You now have a clean Arch installation. Next steps are for X setup with Plasma 5
 23. `sudo wifi-menu`
 24. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake kdebase-dolphin chromium`
   1. When asked to choose between nvidia drivers. Choose `nvidia-libgl`.
+25. `sudo nano /etc/X11/xorg.conf.d/20-keyboard-layout.conf`
+  1. Add following lines:
+  ```
+Section "InputClass"
+	Identifier             "keyboard-layout"
+	MatchIsKeyboard        "on"
+	Option "XkbLayout" "us,ru"
+	Option "XkbOptions" "grp:caps_toggle"
+EndSection
+  ```
+  2. Switching will be on Caps lock. To switch on Ctrl-Shift, for example, use `Option "XkbOptions" "grp:ctrl_shift_toggle"`
 25. `sudo systemctl enable sddm.service`
 26. `sudo reboot`
 27. Login under your user.
