@@ -63,11 +63,13 @@ It is better to perform next steps using Plasma, web browser (i.e. Chromium) and
   2. `tar -xvzf package-query.tar.gz`
   3. `cd package-query`
   4. `makepkg -si`
+  5. `cd ..`
 33. install yaourt packages:
   1. `wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz`
   2. `tar -xvzf package-query.tar.gz`
-  3. `cd package-query`
+  3. `cd yaourt`
   4. `makepkg -si`
+  5. `cd ..`
 26. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
 27. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
 28. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
