@@ -32,6 +32,13 @@
 %wheel ALL=(ALL) ALL
   ```
   2. Save. (Ctrl-X, y, enter)
+17. `nano /etc/locale.gen`
+  1. Uncomment next line (for Russian):
+ ```
+ ru_RU.UTF-8   UTF-8
+ ```
+ 2. Save. (Ctrl-X, y, enter)
+18. `locale-gen`
 17. `grub-install --target=i386-pc --recheck --debug /dev/sda`
 18. `grub-mkconfig -o /boot/grub/grub.cfg`
 19. `exit`
