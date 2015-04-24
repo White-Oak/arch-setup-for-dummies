@@ -93,7 +93,7 @@ You now have a clean Arch installation with several applications and yaourt and 
 Next steps will guide you through the installion process of an infinality bundle.
 
 40. `sudo nano /etc/pacman.conf`
-  1. Add following lines: 
+  1. Add following lines. Note that multilib bundle is used for x86_64 architectures. 
   ```
 [infinality-bundle]
 Server = http://bohoomil.com/repo/$arch
@@ -113,5 +113,6 @@ Include = /etc/pacman.d/mirrorlist
 42. `sudo pacman-key -r 962DDE58`
 43. `sudo pacman-key --lsign-key 962DDE58`
 44. `sudo pacman -Syy infinality-bundle-multilib`
+  1. Install `infinality-bundle` if you are not using x86_64 architecture.
 45. `sudo reboot`
 46. Login under your user.
