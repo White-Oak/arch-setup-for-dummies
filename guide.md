@@ -27,17 +27,11 @@
 15. `passwd IMYA`
   1. Enter password for your user.
 16. `nano /etc/sudoers`
-  1. Uncomment next line:
-  ```
-%wheel ALL=(ALL) ALL
-  ```
+  1. Uncomment `%wheel ALL=(ALL) ALL`
   2. Save. (Ctrl-X, y, enter)
 17. `nano /etc/locale.gen`
-  1. Uncomment next line (for Russian):
- ```
- ru_RU.UTF-8   UTF-8
- ```
- 2. Save. (Ctrl-X, y, enter)
+  1. Uncomment next line (for Russian): `ru_RU.UTF-8   UTF-8`
+  2. Save. (Ctrl-X, y, enter)
 18. `locale-gen`
 17. `grub-install --target=i386-pc --recheck --debug /dev/sda`
 18. `grub-mkconfig -o /boot/grub/grub.cfg`
@@ -53,7 +47,7 @@ You now have a clean Arch installation. Next steps are for X setup with Plasma 5
 24. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake kdebase-dolphin chromium`
   1. When asked to choose between nvidia drivers. Choose `nvidia-libgl`.
 25. `sudo nano /etc/X11/xorg.conf.d/20-keyboard-layout.conf`
-  1. Add following lines:
+  1. Add following lines. Switching will be on Caps lock. To switch on Ctrl-Shift, for example, use `Option "XkbOptions" "grp:ctrl_shift_toggle"`:
   ```
 Section "InputClass"
 	Identifier             "keyboard-layout"
@@ -62,44 +56,43 @@ Section "InputClass"
 	Option "XkbOptions" "grp:caps_toggle"
 EndSection
   ```
-  2. Switching will be on Caps lock. To switch on Ctrl-Shift, for example, use `Option "XkbOptions" "grp:ctrl_shift_toggle"`
-25. `sudo systemctl enable sddm.service`
-26. `sudo reboot`
-27. Login under your user.
+26. `sudo systemctl enable sddm.service`
+27. `sudo reboot`
+28. Login under your user.
 
 ## Yaourt and custom fonts installation
 You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser).
 
 It is better to perform next steps using Plasma, web browser (i.e. Chromium) and terminal with copy-paste feature supported (i.e. yakuake).
 
-28. Run yakuake or press F12.
-29. `sudo wifi-menu`
-30. `mkdir aurs-tmp`
-31. `cd aurs-tmp`
-32. Install package-query from arch AURs:
+29. Run yakuake or press F12.
+30. `sudo wifi-menu`
+31. `mkdir aurs-tmp`
+32. `cd aurs-tmp`
+33. Install package-query from arch AURs:
   1. `wget https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz`
   2. `tar -xvzf package-query.tar.gz`
   3. `cd package-query`
   4. `makepkg -si`
   5. `cd ..`
-33. install yaourt packages:
+34. install yaourt packages:
   1. `wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz`
   2. `tar -xvzf package-query.tar.gz`
   3. `cd yaourt`
   4. `makepkg -si`
   5. `cd ..`
-26. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
-27. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
-28. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
-29. `sudo reboot`
-30. Login under your user.
+35. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
+36. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
+37. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
+38. `sudo reboot`
+39. Login under your user.
 
 ## Infinality installation
 You now have a clean Arch installation with several applications and yaourt and custom fonts installed.
 
 Next steps will guide you through the installion process of an infinality bundle.
 
-30. `sudo nano /etc/pacman.conf`
+40. `sudo nano /etc/pacman.conf`
   1. Add following lines: 
   ```
 [infinality-bundle]
@@ -116,9 +109,9 @@ Server = http://bohoomil.com/repo/fonts
 [multilib] 
 Include = /etc/pacman.d/mirrorlist
   ```
-31. `dirmngr < /dev/null`
-32. `sudo pacman-key -r 962DDE58`
-33. `sudo pacman-key --lsign-key 962DDE58`
-34. `sudo pacman -Syy infinality-bundle-multilib`
-35. `sudo reboot`
-36. Login under your user.
+41. `dirmngr < /dev/null`
+42. `sudo pacman-key -r 962DDE58`
+43. `sudo pacman-key --lsign-key 962DDE58`
+44. `sudo pacman -Syy infinality-bundle-multilib`
+45. `sudo reboot`
+46. Login under your user.
