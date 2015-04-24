@@ -44,8 +44,8 @@
 You now have a clean Arch installation. Next steps are for X setup with Plasma 5.
 
 23. `sudo wifi-menu`
-24. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake kdebase-dolphin chromium`
-  1. When asked to choose between nvidia drivers. Choose `nvidia-libgl`.
+24. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake kdebase-dolphin chromium networkmanager plasma-nm`
+  1. When asked to choose between nvidia drivers. Choose `nvidia-libgl` (For NVIDIA users).
 25. `sudo nano /etc/X11/xorg.conf.d/20-keyboard-layout.conf`
   1. Add following lines. Switching will be on Caps lock. To switch on Ctrl-Shift, for example, use `Option "XkbOptions" "grp:ctrl_shift_toggle"`:
   ```
@@ -57,16 +57,16 @@ Section "InputClass"
 EndSection
   ```
 26. `sudo systemctl enable sddm.service`
-27. `sudo reboot`
-28. Login under your user.
+27. `sudo systemctl enable NetworkManager.service`
+28. `sudo reboot`
+29. Login under your user. Use networks applet on Plasma panel to configure network.
 
 ## Yaourt and custom fonts installation
 You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser).
 
 It is better to perform next steps using Plasma, web browser (i.e. Chromium) and terminal with copy-paste feature supported (i.e. yakuake).
 
-29. Run yakuake or press F12.
-30. `sudo wifi-menu`
+30. Run yakuake or press F12.
 31. `mkdir aurs-tmp`
 32. `cd aurs-tmp`
 33. Install package-query from arch AURs:
