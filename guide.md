@@ -15,37 +15,38 @@
 7. `mkfs.ext4 /dev/sdaX`
   1. Make sure you are formatting the right partition! **There is NO turning back from this point!**. If yes — enter 'y' when promted.
 8. `mount /dev/sdaX /mnt`
-9. `pacstrap /mnt base base-devel`
+9. `reflector --protocol http --latest 50 --number 10 --sort rate --save /mnt/etc/pacman.d/mirrorlist --verbose`
+10. `pacstrap /mnt base base-devel`
   1. Go take a cup of tea. It takes time.
-10. `genfstab -p /mnt >> /mnt/etc/fstab`
-11. `arch-chroot /mnt`
+11. `genfstab -p /mnt >> /mnt/etc/fstab`
+12. `arch-chroot /mnt`
   1. If promted with sh-4.3 — you are on the right way.
-12. `pacman -S grub os-prober dialog wpa_supplicant fish wget`
-13. `useradd -m -G wheel -s /usr/bin/fish IMYA`
-14. `passwd`
+13. `pacman -S grub os-prober dialog wpa_supplicant fish wget`
+14. `useradd -m -G wheel -s /usr/bin/fish IMYA`
+15. `passwd`
   1. Enter password for root.
-15. `passwd IMYA`
+16. `passwd IMYA`
   1. Enter password for your user.
-16. `nano /etc/sudoers`
+17. `nano /etc/sudoers`
   1. Uncomment `%wheel ALL=(ALL) ALL`
   2. Save. (Ctrl-X, y, enter)
-17. `nano /etc/locale.gen`
+18. `nano /etc/locale.gen`
   1. Uncomment next line (for Russian): `ru_RU.UTF-8   UTF-8`
   2. Save. (Ctrl-X, y, enter)
-18. `echo LANG=en_US.UTF-8 > /etc/locale/conf`
-19. `locale-gen`
-20. `grub-install --target=i386-pc --recheck --debug /dev/sda`
-21. `grub-mkconfig -o /boot/grub/grub.cfg`
-22. `exit`
-23. `reboot`
-24. Take your flash drive out!
-25. Login under your user.
+19. `echo LANG=en_US.UTF-8 > /etc/locale/conf`
+20. `locale-gen`
+21. `grub-install --target=i386-pc --recheck --debug /dev/sda`
+22. `grub-mkconfig -o /boot/grub/grub.cfg`
+23. `exit`
+24. `reboot`
+25. Take your flash drive out!
+26. Login under your user.
 
 ## X and Plasma setup
 You now have a clean Arch installation. Next steps are for X setup with Plasma 5.
 
 1. `sudo wifi-menu`
-2. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake kdebase-dolphin chromium networkmanager plasma-nm alsa-utils pavucontrol`
+2. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake kdebase-dolphin chromium networkmanager plasma-nm alsa-utils pavucontrol gtk-theme-orion`
   1. When asked to choose between nvidia drivers. Choose `nvidia-libgl` (For NVIDIA users).
 3. `sudo systemctl enable sddm.service`
 4. `sudo systemctl enable NetworkManager.service`
