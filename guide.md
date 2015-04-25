@@ -117,3 +117,8 @@ Include = /etc/pacman.d/mirrorlist
   2. Press 'y' when promted about conflicts.
 45. `sudo reboot`
 46. Login under your user.
+
+## Development
+Next steps are for convinient development process.
+
+1. `yaourt -S jdk8-openjdk-infinality --noconfirm`
