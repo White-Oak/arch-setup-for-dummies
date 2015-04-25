@@ -98,7 +98,7 @@ Next steps will guide you through the installion process of an infinality bundle
 
 1. `sudo nano /etc/pacman.conf`
   1. Add following lines
-```
+  ```
 [infinality-bundle]		
 Server = http://bohoomil.com/repo/$arch		
 		
@@ -107,7 +107,7 @@ Server = http://bohoomil.com/repo/multilib/$arch
 		
 [infinality-bundle-fonts]		
 Server = http://bohoomil.com/repo/fonts
-```
+  ```
   2. Uncomment [multilib] part.
 2. `sudo dirmngr < /dev/null`		
 3. `sudo pacman-key -r 962DDE58`		
