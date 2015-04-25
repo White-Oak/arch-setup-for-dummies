@@ -95,6 +95,7 @@ EndSection
 You now have a clean Arch installation with several applications and yaourt and custom fonts installed.
 
 Next steps will guide you through the installion process of an infinality bundle.
+
 1. `sudo nano /etc/pacman.conf`
   1. Add following lines
 ```
@@ -108,11 +109,14 @@ Server = http://bohoomil.com/repo/multilib/$arch
 Server = http://bohoomil.com/repo/fonts
 ```
   2. Uncomment [multilib] part.
-3. `yaourt -S infinality-bundle-multilib`
+2. `sudo dirmngr < /dev/null`		
+3. `sudo pacman-key -r 962DDE58`		
+4. `sudo pacman-key --lsign-key 962DDE58`		
+5. `sudo pacman -Syy infinality-bundle-multilib`
   1. Install `infinality-bundle` if you are not using x86_64 architecture.
   2. Press 'y' when promted about conflicts.
-4. `sudo reboot`
-5. Login under your user.
+6. `sudo reboot`
+7. Login under your user.
 
 ## Development
 Next steps are for convinient development process.
