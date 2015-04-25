@@ -84,39 +84,21 @@ EndSection
 35. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
 36. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
 37. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
-38. `sudo reboot`
-39. Login under your user.
+38. `sudo fc-presets set`
+  1. Choose `ms` set
+39. `sudo reboot`
+40. Login under your user.
 
 ## Infinality installation
 You now have a clean Arch installation with several applications and yaourt and custom fonts installed.
 
 Next steps will guide you through the installion process of an infinality bundle.
 
-40. `sudo nano /etc/pacman.conf`
-  1. Add following lines. Note that multilib bundle is used for x86_64 architectures. 
-  ```
-[infinality-bundle]
-Server = http://bohoomil.com/repo/$arch
-
-[infinality-bundle-multilib]
-Server = http://bohoomil.com/repo/multilib/$arch
-
-[infinality-bundle-fonts]
-Server = http://bohoomil.com/repo/fonts
-  ```
-  2. Uncomment following lines: 
-  ```
-[multilib] 
-Include = /etc/pacman.d/mirrorlist
-  ```
-41. `sudo dirmngr < /dev/null`
-42. `sudo pacman-key -r 962DDE58`
-43. `sudo pacman-key --lsign-key 962DDE58`
-44. `sudo pacman -Syy infinality-bundle-multilib`
+41. `yaourt -S infinality-bundle-multilib`
   1. Install `infinality-bundle` if you are not using x86_64 architecture.
   2. Press 'y' when promted about conflicts.
-45. `sudo reboot`
-46. Login under your user.
+42. `sudo reboot`
+43. Login under your user.
 
 ## Development
 Next steps are for convinient development process.
