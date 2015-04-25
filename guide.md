@@ -15,13 +15,13 @@
 7. `mkfs.ext4 /dev/sdaX`
   1. Make sure you are formatting the right partition! **There is NO turning back from this point!**. If yes — enter 'y' when promted.
 8. `mount /dev/sdaX /mnt`
-9. `reflector --protocol http --latest 50 --number 10 --sort rate --save /mnt/etc/pacman.d/mirrorlist --verbose`
-10. `pacstrap /mnt base base-devel`
+9. `pacstrap /mnt base base-devel`
   1. Go take a cup of tea. It takes time.
-11. `genfstab -p /mnt >> /mnt/etc/fstab`
-12. `arch-chroot /mnt`
+10. `genfstab -p /mnt >> /mnt/etc/fstab`
+11. `arch-chroot /mnt`
   1. If promted with sh-4.3 — you are on the right way.
-13. `pacman -S grub os-prober dialog wpa_supplicant fish wget`
+12. `pacman -S grub os-prober dialog wpa_supplicant fish wget reflector`
+13. `reflector --protocol http --latest 50 --number 10 --sort rate --save /mnt/etc/pacman.d/mirrorlist --verbose`
 14. `useradd -m -G wheel -s /usr/bin/fish IMYA`
 15. `passwd`
   1. Enter password for root.
