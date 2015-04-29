@@ -32,7 +32,8 @@
   2. Save. (Ctrl-X, y, enter)
 18. `nano /etc/locale.gen`
   1. Uncomment next line (for Russian): `ru_RU.UTF-8   UTF-8`
-  2. Save. (Ctrl-X, y, enter)
+  2. Uncomment next line (for English): `en_US.UTF-8   UTF-8`
+  3. Save. (Ctrl-X, y, enter)
 19. `echo LANG=en_US.UTF-8 > /etc/locale.conf`
 20. `locale-gen`
 21. `grub-install --target=i386-pc --recheck --debug /dev/sda`
