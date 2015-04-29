@@ -87,10 +87,8 @@ EndSection
 7. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
 8. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
 9. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
-10. `sudo fc-presets set`
-  1. Choose `ms` set
-11. `sudo reboot`
-12. Login under your user.
+10. `sudo reboot`
+11. Login under your user.
 
 ## Infinality installation
 You now have a clean Arch installation with several applications and yaourt and custom fonts installed.
@@ -116,8 +114,10 @@ Server = http://bohoomil.com/repo/fonts
 5. `sudo pacman -Syy infinality-bundle-multilib`
   1. Install `infinality-bundle` if you are not using x86_64 architecture.
   2. Press 'y' when promted about conflicts.
-6. `sudo reboot`
-7. Login under your user.
+6. `sudo fc-presets set`
+  1. Choose `ms` set
+7. `sudo reboot`
+8. Login under your user.
 
 ## Development
 Next steps are for convinient development process.
