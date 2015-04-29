@@ -84,11 +84,13 @@ EndSection
   3. `cd yaourt`
   4. `makepkg -si`
   5. `cd ..`
-7. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
-8. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
-9. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
-10. `sudo reboot`
-11. Login under your user.
+7. `cd ..`
+8. `rm -rf aurs-temp`
+8. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
+9. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
+10. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
+11. `sudo reboot`
+12. Login under your user.
 
 ## Infinality installation
 You now have a clean Arch installation with several applications and yaourt and custom fonts installed.
