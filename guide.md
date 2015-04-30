@@ -43,12 +43,16 @@
 25. Take your flash drive out!
 26. Login under your user.
 
-## X and Plasma setup
-You now have a clean Arch installation. Next steps are for X setup with Plasma 5.
+## X and DE setup
+You now have a clean Arch installation. Next steps are for X setup with DE.
 
 1. `sudo wifi-menu`
-2. `sudo pacman -S xorg-server xorg-server-utils xorg-apps nvidia sddm plasma yakuake kdebase-dolphin chromium networkmanager plasma-nm alsa-utils pavucontrol gtk-theme-orion`
-  1. When asked to choose between nvidia drivers. Choose `nvidia-libgl` (For NVIDIA users).
+2. `sudo pacman -S xorg-server xorg-server-utils xorg-apps sddm chromium`
+  1. For NVIDIA users: When asked to choose between nvidia drivers. Choose `nvidia-libgl`. Run `sudo pacman -S nvidia`.
+  2. For Intel GPU users: run `sudo pacman -S xf86-video-intel mesa-libgl libva` 
+3. Install DE.
+  1. Plasma: `sudo pacman -S plasma plasma yakuake kdebase-dolphin gtk-theme-orion`
+  2. XFCE: `sudo pacman -S xfce4`
 3. `sudo systemctl enable sddm.service`
 4. `sudo systemctl enable NetworkManager.service`
 5. `sudo reboot`
