@@ -12,7 +12,7 @@
 where:
 * %UUID% is an UUID from blkid output.
 * %dev-link% is a link to your desired file system, i.e. /dev/sda1.
-* %mountpoint% is a desired location to mount a file system, i.e. /home/backup/
+* %mountpoint% is a desired location to mount a file system, i.e. /home/backup
 * %fs-type% is a type of file system, i.e. ntfs-3g or ext4
 * %options% is a field for options
   * Recommended options for ntfs-3g filesystems are `defaults`
