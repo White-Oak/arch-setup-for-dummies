@@ -8,6 +8,7 @@
   # UUID=xxxxxxxxxxxx
   %dev-link%               %mountpoint%     %fs-type%            %options%        0 %fscheck%
   ```
+  
 where:
 * %dev-link% is a link to your desired file system, i.e. /dev/sda1.
 * %mountpoint% is a desired location to mount a file system, i.e. /home/backup/
