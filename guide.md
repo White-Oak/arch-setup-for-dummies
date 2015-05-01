@@ -21,7 +21,7 @@
 11. `arch-chroot /mnt`
   1. If promted with sh-4.3 — you are on the right way.
 12. `pacman -S grub os-prober dialog wpa_supplicant fish wget reflector`
-13. `reflector --protocol http --latest 50 --number 10 --sort rate --save /etc/pacman.d/mirrorlist --verbose`
+13. `reflector --latest 50 --number 10 --sort rate --save /etc/pacman.d/mirrorlist --verbose`
 14. `useradd -m -G wheel -s /usr/bin/fish IMYA`
 15. `passwd`
   1. Enter password for root.
