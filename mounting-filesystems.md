@@ -5,11 +5,12 @@
 4. Add lines following the next template:
 
   ```
-  # UUID=xxxxxxxxxxxx
+  # UUID=%UUID%
   %dev-link%               %mountpoint%     %fs-type%            %options%        0 %fscheck%
   ```
   
 where:
+* %UUID% is an UUID from blkid output.
 * %dev-link% is a link to your desired file system, i.e. /dev/sda1.
 * %mountpoint% is a desired location to mount a file system, i.e. /home/backup/
 * %fs-type% is a type of file system, i.e. ntfs-3g or ext4
