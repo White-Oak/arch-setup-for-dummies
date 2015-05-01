@@ -54,9 +54,8 @@ You now have a clean Arch installation. Next steps are for X setup with DE.
   1. Plasma: `sudo pacman -S plasma yakuake kdebase-dolphin gtk-theme-orion`
   2. XFCE: `sudo pacman -S xfce4`
 3. `sudo systemctl enable sddm.service`
-4. `sudo systemctl enable NetworkManager.service`
-5. `sudo reboot`
-6. Login under your user. Use networks applet on Plasma panel to configure network.
+4. `sudo reboot`
+5. Login under your user. Use networks applet on Plasma panel to configure network.
 
 ## Yaourt and custom fonts installation
 You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser).
