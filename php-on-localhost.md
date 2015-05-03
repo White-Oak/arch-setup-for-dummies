@@ -41,4 +41,5 @@
     2. Uncomment next lines `extension=mcrypt.so;`,`extension=mysql.so`, `extension=mysqli.so` to enable needed extensions
 7. `sudo systemctl start nginx.service php-fpm.service`
 8. `sudo systemctl enable nginx.service php-fpm.service`
+9. Put your php files in `/usr/share/nginx/html`.
 9. Go to localhost and phpmyadmin.localhost. 
