@@ -36,12 +36,13 @@
   3. Save. (Ctrl-X, y, enter)
 19. `echo LANG=en_US.UTF-8 > /etc/locale.conf`
 20. `locale-gen`
-21. `grub-install --target=i386-pc --recheck --debug /dev/sda`
-22. `grub-mkconfig -o /boot/grub/grub.cfg`
-23. `exit`
-24. `reboot`
-25. Take your flash drive out!
-26. Login under your user.
+21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`
+22. `grub-install --target=i386-pc --recheck --debug /dev/sda`
+23. `grub-mkconfig -o /boot/grub/grub.cfg`
+24. `exit`
+25. `reboot`
+26. Take your flash drive out!
+27. Login under your user.
 
 ## X and DE setup
 You now have a clean Arch installation. Next steps are for X setup with DE.
