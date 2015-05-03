@@ -37,7 +37,7 @@
   ```
   
 6. Edit `/etc/php/php.ini`:
-    1. `open_base_dir` line should look somewhat like that: `open_basedir = /usr/share/webapps/:/srv/http/:/usr/share/nginx/html/:/home/:/tmp/:/usr/share/pear/:/etc/webapps/`
+    1. `open_basedir` line should look somewhat like that: `open_basedir = /usr/share/webapps/:/srv/http/:/usr/share/nginx/html/:/home/:/tmp/:/usr/share/pear/:/etc/webapps/`
     2. Uncomment next lines `extension=mcrypt.so;`,`extension=mysql.so`, `extension=mysqli.so` to enable needed extensions
 7. `sudo systemctl start nginx.service php-fpm.service`
 8. `sudo systemctl enable nginx.service php-fpm.service`
