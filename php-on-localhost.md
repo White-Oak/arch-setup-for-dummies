@@ -2,7 +2,7 @@
 2. `sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql`
 3. `sudo systemctl enable mysqld.service`
 4. `sudo systemctl start mysqld.service`
-5. Instead of existing `server` blocks in /etc/nginx/nginx.conf enter following:
+5. Instead of existing `server` blocks in `/etc/nginx/nginx.conf` enter following:
   ```
   server {
         listen       80;
@@ -36,7 +36,7 @@
     }
   ```
   
-6. Edit php.ini:
+6. Edit `/etc/php/php.ini`:
     1. `open_base_dir` line should look somewhat like that: `open_basedir = /usr/share/webapps/:/srv/http/:/usr/share/nginx/html/:/home/:/tmp/:/usr/share/pear/:/etc/webapps/`
     2. Uncomment next lines `extension=mcrypt.so;`,`extension=mysql.so`, `extension=mysqli.so` to enable needed extensions
 7. `sudo systemctl start nginx.service php-fpm.service`
