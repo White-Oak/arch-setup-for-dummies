@@ -4,7 +4,7 @@
 4. `sudo systemctl start mysqld.service`
 5. `mysql -u root -p`
   1. When prompted about password, press Enter.
-  2. Query following (Replace %name% and %pass% with your preferences):
+  2. Query following (Replace `%name%` and `%pass%` with your preferences):
 
     ```
     CREATE USER '%name%'@'localhost' IDENTIFIED BY '%pass%';
