@@ -1,3 +1,5 @@
+Installs LNMP (Linux + Nginx + MySQL + PHP) to an Arch installation.
+
 1. `yaourt -S mariadb php php-fpm nginx phpmyadmin php-mcrypt --noconfirm`
 2. `sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql`
 3. `sudo systemctl enable mysqld.service`
