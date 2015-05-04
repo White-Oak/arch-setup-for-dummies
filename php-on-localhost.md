@@ -44,8 +44,9 @@ Installs LNMP (Linux + Nginx + MySQL + PHP) to an Arch installation.
     }
   ```
 6. Edit `/etc/php/php.ini`:
-    1. `open_basedir` line should look somewhat like that: `open_basedir = /usr/share/webapps/:/srv/http/:/usr/share/nginx/html/:/home/:/tmp/:/usr/share/pear/:/etc/webapps/`
-    2. Uncomment next lines `extension=mcrypt.so`,`extension=mysql.so`, `extension=mysqli.so` to enable needed extensions
+    1. `open_basedir` line should look somewhat like that: `open_basedir = /usr/share/webapps/:/srv/http/:/usr/share/nginx/html/:/home/:/tmp/:/usr/share/pear/:/etc/webapps/`.
+    2. Uncomment next lines `extension=mcrypt.so`,`extension=mysql.so`, `extension=mysqli.so` to enable needed extensions.
+    3. Change `display_errors = Off` to `display_errors = On`.
 7. `sudo chmod 777 /usr/share/nginx/html` -- _Never do this on production!_
 8. `sudo systemctl start nginx.service php-fpm.service`
 9. `sudo systemctl enable nginx.service php-fpm.service`
