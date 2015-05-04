@@ -5,10 +5,11 @@
 5. `mysql -u root -p`
   1. When prompted about password, press Enter.
   2. Query following (Replace %name% and %pass% with your preferences):
-  ```
-  CREATE USER '%name%'@'localhost' IDENTIFIED BY '%pass%';
-  GRANT ALL PRIVILEGES ON *.* TO '%name%'@'localhost' WITH GRANT OPTION;
-  ```
+
+    ```
+    CREATE USER '%name%'@'localhost' IDENTIFIED BY '%pass%';
+    GRANT ALL PRIVILEGES ON *.* TO '%name%'@'localhost' WITH GRANT OPTION;
+    ```
 5. Instead of existing `server` blocks in `/etc/nginx/nginx.conf` enter following:
   ```
   server {
