@@ -10,9 +10,7 @@
         
         root   /usr/share/nginx/html;
 
-        location / {
-            index  index.php index.html index.htm;
-        }
+        index  index.php index.html index.htm;
 
         location ~ \.php$ {
             fastcgi_pass   unix:/run/php-fpm/php-fpm.sock;
