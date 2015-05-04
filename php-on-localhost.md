@@ -2,6 +2,13 @@
 2. `sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql`
 3. `sudo systemctl enable mysqld.service`
 4. `sudo systemctl start mysqld.service`
+5. `mysql -u root -p`
+  1. When prompted about password, press Enter.
+  2. Query following (Replace %name% and %pass% with your preferences):
+  ```
+  CREATE USER '%name%'@'localhost' IDENTIFIED BY '%pass%';
+  GRANT ALL PRIVILEGES ON *.* TO '%name%'@'localhost' WITH GRANT OPTION;
+  ```
 5. Instead of existing `server` blocks in `/etc/nginx/nginx.conf` enter following:
   ```
   server {
@@ -33,7 +40,6 @@
          }
     }
   ```
-  
 6. Edit `/etc/php/php.ini`:
     1. `open_basedir` line should look somewhat like that: `open_basedir = /usr/share/webapps/:/srv/http/:/usr/share/nginx/html/:/home/:/tmp/:/usr/share/pear/:/etc/webapps/`
     2. Uncomment next lines `extension=mcrypt.so`,`extension=mysql.so`, `extension=mysqli.so` to enable needed extensions
