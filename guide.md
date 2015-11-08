@@ -52,7 +52,7 @@ You now have a clean Arch installation. Next steps are for X setup with DE.
   1. For NVIDIA users: When asked to choose between nvidia drivers. Choose `nvidia-libgl`. Run `sudo pacman -S nvidia`.
   2. For Intel GPU users: run `sudo pacman -S xf86-video-intel mesa-libgl libva` 
 3. Install DE.
-  1. Plasma: `sudo pacman -S plasma yakuake kdebase-dolphin gtk-theme-orion`
+  1. Plasma: `sudo pacman -S plasma yakuake dolphin gtk-theme-orion`
   2. XFCE: `sudo pacman -S xfce4`
 3. `sudo systemctl enable sddm.service`
 4. `sudo systemctl enable NetworkManager`
