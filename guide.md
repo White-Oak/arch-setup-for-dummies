@@ -79,13 +79,13 @@ EndSection
 3. `mkdir aurs-tmp`
 4. `cd aurs-tmp`
 5. Install package-query from arch AURs:
-  1. `wget https://aur.archlinux.org/packages/pa/package-query/package-query.tar.gz`
+  1. `wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz`
   2. `tar -xvzf package-query.tar.gz`
   3. `cd package-query`
   4. `makepkg -si`
   5. `cd ..`
 6. install yaourt packages:
-  1. `wget https://aur.archlinux.org/packages/ya/yaourt/yaourt.tar.gz`
+  1. `wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz`
   2. `tar -xvzf yaourt.tar.gz`
   3. `cd yaourt`
   4. `makepkg -si`
