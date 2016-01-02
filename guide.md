@@ -31,8 +31,13 @@
 16. `passwd IMYA`
   1. Enter password for your user.
 17. `nano /etc/sudoers`
-  1. Uncomment `%wheel ALL=(ALL) ALL`
-  2. Save. (Ctrl-X, y, enter)
+  1. Search for:
+  ```
+## Uncomment to allow members of group wheel to execute any command
+# %wheel ALL=(ALL) ALL
+  ```
+  2. Uncomment `%wheel ALL=(ALL) ALL`
+  3. Save. (Ctrl-X, y, enter)
 18. `nano /etc/locale.gen`
   1. Uncomment next line (for Russian): `ru_RU.UTF-8   UTF-8`
   2. Uncomment next line (for English): `en_US.UTF-8   UTF-8`
