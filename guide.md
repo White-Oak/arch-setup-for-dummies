@@ -42,10 +42,11 @@
 21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`
 22. `grub-install --target=i386-pc --recheck --debug /dev/sda`
 23. `grub-mkconfig -o /boot/grub/grub.cfg`
-24. `exit`
-25. `reboot`
-26. Take your flash drive out!
-27. Login under your user.
+25. `echo compname > /etc/hostname`if you need to change your host name for some reason
+26. `exit`
+27. `reboot`
+28. Take your flash drive out!
+29. Login under your user.
 
 ## X and DE setup
 You now have a clean Arch installation. Next steps are for X setup with DE.
@@ -83,7 +84,7 @@ You now have a clean Arch installation. Next steps are for X setup with DE.
 5. `cd ..`
 6. `rm -rf aurs-temp`
 
-## Yaourt and custom fonts installation
+## Custom fonts installation
 You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser).
 
 It is better to perform next steps using Plasma, web browser (i.e. Chromium) and terminal with copy-paste feature supported (i.e. yakuake).
