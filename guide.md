@@ -51,6 +51,7 @@ You now have a clean Arch installation. Next steps are for X setup with DE.
 2. `sudo pacman -S xorg-server xorg-server-utils xorg-apps sddm chromium`
   1. For NVIDIA users: When asked to choose between nvidia drivers. Choose `nvidia-libgl`. Run `sudo pacman -S nvidia`.
   2. For Intel GPU users: run `sudo pacman -S xf86-video-intel mesa-libgl libva` 
+  3. For Mixed users: run `sudo pacman -S bumblebee`
 3. Install DE.
   1. Plasma: `sudo pacman -S plasma yakuake dolphin gtk-theme-orion`
   2. XFCE: `sudo pacman -S xfce4`
@@ -116,7 +117,7 @@ Server = http://bohoomil.com/repo/$arch
 Server = http://bohoomil.com/repo/multilib/$arch		
 		
 [infinality-bundle-fonts]		
-Server = http://bohoomil.com/repo/fonts
+Server = http://bohoomil.com/repo/fonts
   ```
   2. Uncomment [multilib] part.
 2. `sudo dirmngr < /dev/null`		
