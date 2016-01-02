@@ -20,8 +20,11 @@
 10. `genfstab -p /mnt >> /mnt/etc/fstab`
 11. `arch-chroot /mnt`
   1. If promted with sh-4.3 — you are on the right way.
-12. `pacman -S grub os-prober dialog wpa_supplicant fish wget reflector`
-13. `reflector --latest 50 --number 10 --sort rate --save /etc/pacman.d/mirrorlist --verbose`
+12. `pacman -S grub os-prober` and add more:
+  1. `dialog wpa_supplicant` -- for wifi access
+  2. `wget` -- we will need this to get yaourt
+  3. `reflector` -- this only updates mirror list pretty optional
+13. `reflector --latest 50 --number 10 --sort rate --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
 14. `useradd -m -G wheel -s /usr/bin/fish IMYA`
 15. `passwd`
   1. Enter password for root.
