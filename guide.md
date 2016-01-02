@@ -60,6 +60,25 @@ You now have a clean Arch installation. Next steps are for X setup with DE.
 5. `sudo reboot`
 6. Login under your user. Use networks applet on Plasma panel to configure network.
 
+## Yaourt installation
+
+1. `mkdir aurs-tmp`
+2. `cd aurs-tmp`
+3. Install package-query from arch AURs:
+  1. `wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz`
+  2. `tar -xvzf package-query.tar.gz`
+  3. `cd package-query`
+  4. `makepkg -si`
+  5. `cd ..`
+4. install yaourt packages:
+  1. `wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz`
+  2. `tar -xvzf yaourt.tar.gz`
+  3. `cd yaourt`
+  4. `makepkg -si`
+  5. `cd ..`
+5. `cd ..`
+6. `rm -rf aurs-temp`
+
 ## Yaourt and custom fonts installation
 You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser).
 
@@ -76,27 +95,11 @@ Section "InputClass"
 	Option "XkbOptions" "grp:caps_toggle"
 EndSection
   ```
-3. `mkdir aurs-tmp`
-4. `cd aurs-tmp`
-5. Install package-query from arch AURs:
-  1. `wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz`
-  2. `tar -xvzf package-query.tar.gz`
-  3. `cd package-query`
-  4. `makepkg -si`
-  5. `cd ..`
-6. install yaourt packages:
-  1. `wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz`
-  2. `tar -xvzf yaourt.tar.gz`
-  3. `cd yaourt`
-  4. `makepkg -si`
-  5. `cd ..`
-7. `cd ..`
-8. `rm -rf aurs-temp`
-8. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
-9. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
-10. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
-11. `sudo reboot`
-12. Login under your user.
+3. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
+4. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
+5. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
+6. `sudo reboot`
+7. Login under your user.
 
 ## Infinality installation
 You now have a clean Arch installation with several applications and yaourt and custom fonts installed.
