@@ -56,7 +56,9 @@
 ## X and DE setup
 You now have a clean Arch installation. Next steps are for X setup with DE.
 
-1. `sudo wifi-menu`
+1. Internet:
+  1. `sudo wifi-menu` for Wi-Fi
+  2. `sudo systemctl enable --now dhcpcd.service` for Ethernet
 2. `sudo pacman -S xorg-server xorg-server-utils xorg-apps sddm chromium`
   1. For NVIDIA users: When asked to choose between nvidia drivers. Choose `nvidia-libgl`. Run `sudo pacman -S nvidia`.
   2. For Intel GPU users: run `sudo pacman -S xf86-video-intel mesa-libgl libva` 
@@ -65,7 +67,7 @@ You now have a clean Arch installation. Next steps are for X setup with DE.
   1. Plasma: `sudo pacman -S plasma yakuake dolphin gtk-theme-orion`
   2. XFCE: `sudo pacman -S xfce4`
 3. `sudo systemctl enable sddm.service`
-4. `sudo systemctl enable NetworkManager`
+4. `sudo systemctl enable NetworkManager` only if you connect through Wi-Fi
   1. `sudo pacman -S NetworkManager` if it is not installed yet.
 5. `sudo reboot`
 6. Login under your user. Use networks applet on Plasma panel to configure network.
