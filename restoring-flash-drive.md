@@ -1,4 +1,4 @@
-If you wrote an image on a USB drive it may be shown incorrectly in file managers.
+If you wrote an image directly to an USB drive it won't show correctly in file managers.
 
 # Windows
 Source: http://www.passmark.com/forum/showthread.php?4508-Reclaim-disk-space-after-imaging-with-imageUSB
