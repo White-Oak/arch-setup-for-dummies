@@ -1,4 +1,4 @@
-This is probably not the most relevant guide, but I wanted to save it at least for myself, cause it is a really convinient way to write any bootable thing on it.
+This is probably not the most useful guide, but I wanted to save it at least for myself, cause it is a really convinient way to write any bootable thing on it.
 
 0. Discover your usb's drive letter it is usually b, thus `/deb/sdb`
 1. Format a usb drive using either fdisk or gparted or any other tool; give it an NTFS partition.
