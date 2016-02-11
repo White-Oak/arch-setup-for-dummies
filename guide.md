@@ -108,7 +108,8 @@ Section "InputClass"
 EndSection
   ```
 3. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
-4. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
+4. For Microsoft fonts:
+  1. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
 5. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
 6. `sudo reboot`
 7. Login under your user.
@@ -116,7 +117,7 @@ EndSection
 ## Infinality installation
 You now have a clean Arch installation with several applications and yaourt and custom fonts installed.
 
-Next steps will guide you through the installion process of an infinality bundle.
+Next steps will guide you through the installion process of an infinality bundle. I'm not sure if you really need it now, cause fonts on my Arch install look really good. I'm not sure about Java, though.
 
 1. `sudo nano /etc/pacman.conf`
   1. Add following lines
