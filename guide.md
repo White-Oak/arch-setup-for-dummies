@@ -45,7 +45,7 @@
   3. Save. (Ctrl-X, y, enter)
 19. `echo LANG=en_US.UTF-8 > /etc/locale.conf`
 20. `locale-gen`
-21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`
+21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`, instead of `Europe/Moscow` use your own timezone!
 22. `grub-install --target=i386-pc --recheck --debug /dev/sda`
 23. `grub-mkconfig -o /boot/grub/grub.cfg`
 25. `echo compname > /etc/hostname`if you need to change your host name for some reason
