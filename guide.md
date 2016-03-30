@@ -4,7 +4,7 @@
   1. We will name them /dev/sdaX — linux partion and /dev/sdaY — swap partition.
 2. Load arch-linux from your flash drive. Whether it is USB stick or CD-R image.
 3. Upon loading of the live image execute next commands.
-4. `wifi-menu`
+4. `wifi-menu` if you are wifi user
   1. Choose your network. OK.
   2. OK.
   3. Enter your password for the network. OK.
@@ -20,12 +20,13 @@
 10. `genfstab -p /mnt >> /mnt/etc/fstab`
 11. `arch-chroot /mnt`
   1. If promted with sh-4.3 — you are on the right way.
-12. `pacman -S grub os-prober` and add more:
+12. `pacman -S grub os-prober` for MBR loader and add more:
   1. `dialog wpa_supplicant` -- for wifi access
   2. `wget` -- we will need this to get yaourt
-  3. `reflector` -- this only updates mirror list pretty optional
+  3. `reflector` -- this only updates mirror list, pretty optional
+  4. `fish` -- this a cool and nice looking shell alternative to bash. I recommend it, but it's not POSIX!
 13. `reflector --latest 50 --number 10 --sort rate --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
-14. `useradd -m -G wheel -s /usr/bin/fish IMYA`
+14. `useradd -m -G wheel -s /usr/bin/fish IMYA` or `useradd -m -G wheel IMYA` if you haven't installed fish
 15. `passwd`
   1. Enter password for root.
 16. `passwd IMYA`
