@@ -115,7 +115,7 @@ EndSection
 6. `sudo reboot`
 7. Login under your user.
 
-## Infinality installation
+## Infinality installation (Unrecommended)
 You now have a clean Arch installation with several applications and yaourt and custom fonts installed.
 
 Next steps will guide you through the installion process of an infinality bundle. I'm not sure if you really need it now, cause fonts on my Arch install look really good. I'm not sure about Java, though.
