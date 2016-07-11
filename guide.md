@@ -71,7 +71,7 @@ You now have a clean Arch installation. Next steps are for X setup with DE.
 4. `sudo systemctl enable NetworkManager` only if you connect through Wi-Fi
   1. `sudo pacman -S NetworkManager` if it is not installed yet.
 5. `sudo reboot`
-6. Login under your user. Use networks applet on Plasma panel to configure network.
+6. Login under your user. Use networks applet on DE panel to configure network (if you installed NetworkManager).
 
 ## Yaourt installation
 
@@ -95,11 +95,12 @@ You now have a clean Arch installation. Next steps are for X setup with DE.
 ## Custom fonts installation
 You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser).
 
-It is better to perform next steps using Plasma, web browser (i.e. Chromium) and terminal with copy-paste feature supported (i.e. yakuake).
+It is easier to perform next steps using DE, web browser (i.e. Chromium) and terminal with copy-paste feature supported (i.e. yakuake or konsole).
 
 1. Run yakuake or press F12.
-2. `sudo nano /etc/X11/xorg.conf.d/20-keyboard-layout.conf`
-  1. Add following lines. Switching will be on Caps lock. To switch on Ctrl-Shift, for example, use `Option "XkbOptions" "grp:ctrl_shift_toggle"`:
+2. Run following to change your shortcut to change languages (if you need one):
+  1. `sudo nano /etc/X11/xorg.conf.d/20-keyboard-layout.conf`
+  2. Add following lines. Switching will be on Caps lock. To switch on Ctrl-Shift, for example, use `Option "XkbOptions" "grp:ctrl_shift_toggle"`:
   ```
 Section "InputClass"
 	Identifier             "keyboard-layout"
@@ -144,7 +145,3 @@ Server = http://bohoomil.com/repo/fonts
 7. `sudo reboot`
 8. Login under your user.
 
-## Development
-Next steps are for convinient development process.
-
-1. `yaourt -S jdk8-openjdk-infinality --noconfirm`
