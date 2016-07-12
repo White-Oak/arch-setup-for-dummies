@@ -59,7 +59,7 @@ You now have a clean Arch installation. Next steps are for X setup with DE.
 
 1. Internet:
   1. `sudo wifi-menu` for Wi-Fi
-  2. `sudo systemctl enable --now dhcpcd.service` for Ethernet
+  2. `sudo systemctl enable --now dhcpcd@.service` for Ethernet
 2. `sudo pacman -S xorg-server xorg-server-utils xorg-apps sddm chromium`
   1. For NVIDIA users: When asked to choose between nvidia drivers. Choose `nvidia-libgl`. Run `sudo pacman -S nvidia`.
   2. For Intel GPU users: run `sudo pacman -S xf86-video-intel mesa-libgl libva` 
