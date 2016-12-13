@@ -43,6 +43,7 @@
   1. Uncomment next line (for Russian): `ru_RU.UTF-8   UTF-8`
   2. Uncomment next line (for English): `en_US.UTF-8   UTF-8`
   3. Save. (Ctrl-X, y, enter)
+  4. You can just use `sed` instead of course: `sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen`
 19. `echo LANG=en_US.UTF-8 > /etc/locale.conf`
 20. `locale-gen`
 21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`, instead of `Europe/Moscow` use your own timezone!
