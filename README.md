@@ -6,7 +6,7 @@ For exceptional dummies like me
 [Editing fstab (mounting filesystems on system start)](mounting-filesystems.md)  
 [Restore flash drive to be useable after having Arch on it](restoring-flash-drive.md)  
 [Set up SSH](setting-up-ssh-agent.md)  
-[Set up a Wi-Fi hotspot](setting-hotspot-ap.md)
+[Set up a Wi-Fi hotspot](setting-hotspot-ap.md)  
 [Using GRUB rescue shell (recovering with an invalid grub.cfg)](https://github.com/White-Oak/arch-setup-for-dummies/blob/master/rescuing-from-grub-rescue.md)
 
 # Disclaimer
