@@ -32,5 +32,5 @@ This is really well covered in https://wiki.archlinux.org/index.php/archiso, but
   echo "blacklist ssb" >> /etc/modprobe.d/blacklist.conf
   ```
 8. `nano packages.x86_64`, and add whatever packages you need. I added `fish` and `python2`.
-9. You are ready to go! `./build.sh`
+9. You are ready to go! `./build.sh -v`
   
