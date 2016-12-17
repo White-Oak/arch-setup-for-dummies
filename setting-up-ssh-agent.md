@@ -28,4 +28,5 @@ set -x SSH_AUTH_SOCK $XDG_RUNTIME_DIR/ssh-agent.socket
     ```
   4. Reboot or reenter a shell to export new variable.
   5. `systemctl --user enable --now ssh-agent`
+  6. To add keys use `ssh-add`
 5. `cat ~/.ssh/id_rsa.pub` will print your public SHH key. Copy it and use.
