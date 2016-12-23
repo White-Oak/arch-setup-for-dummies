@@ -1,4 +1,13 @@
 # Guide
+## Preinstallation
+1. You will need a partition for your Arch Linux installation and, preferably, a swap partition. It is very easy to do before installation, but if you are already loaded into Arch ISO, or doing installation on a new hardware, you can follow these instructions.
+2. `lsblk`. Determine what devices do you have. `/dev/sda` is usually the first SATA drive `/dev/nvme0n1` is usually the first NVMe memory drive (those are SSDs on a motherboard).
+3. `parted device` where `device` is a desired devic to have your installation on.
+4. Run only if you have an empty (unpartitioned) drive: `mklabel msdos`, where `msdos` is a MBR partition type.
+5. `mkpart primary ext4 0% 100%`
+6. `quit`
+7. `lsblk` to check what is there.
+
 ## Basic
 1. Make sure you know what your to-be-linux and swap partitions are.
   1. We will name them /dev/sdaX — linux partion and /dev/sdaY — swap partition.
