@@ -8,6 +8,7 @@ For exceptional dummies like me
 [Set up SSH](setting-up-ssh-agent.md)  
 [Set up a Wi-Fi hotspot](setting-hotspot-ap.md)  
 [Using GRUB rescue shell (recovering with an invalid grub.cfg)](https://github.com/White-Oak/arch-setup-for-dummies/blob/master/rescuing-from-grub-rescue.md)
+[Building your own Arch ISO](building-archiso.md)
 
 # Disclaimer
 This guide is not meant for any educational purpose and may not represent the correct way to install Arch Linux.  
