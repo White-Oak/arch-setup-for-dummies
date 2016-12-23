@@ -1,5 +1,5 @@
 # Building your own Arch installation ISO
-This is really well covered in https://wiki.archlinux.org/index.php/archiso, but I will illustrate it once more on my exact example.
+This is really well covered in https://wiki.archlinux.org/index.php/archiso, but I will illustrate it in a step-by-step way on my exact example.
 
 1. `sudo pacman -S archiso`
 2. `sudo -i`
@@ -14,7 +14,7 @@ This is really well covered in https://wiki.archlinux.org/index.php/archiso, but
   2. `wget https://aur.archlinux.org/cgit/aur.git/snapshot/broadcom-wl.tar.gz`
   3. `tar -xvf broadcom-wl.tar.gz`
   4. `cd broadcom-wl`
-  5. `makepkg -s`. `-s` means install dependencies. It is possible to do it here, because `linux-headers` depndency of the package is make-depndent, so I don't really need it in my ISO. Always check the needed depndencies, when adding custom packages.
+  5. `makepkg -s`. `-s` means install dependencies. It is possible to do it here, because `linux-headers` depndency of the package is make-dependent, so I don't really need it in my ISO. Always check the needed depndencies, when adding custom packages.
   6. Leave the resulting package in the directory or copy it anywhere, but remember the path!
   7. `mkdir custompkg/x86_64`
   8. Copy the built package into that folder
