@@ -125,33 +125,3 @@ EndSection
 5. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
 6. `sudo reboot`
 7. Login under your user.
-
-## Infinality installation (Unrecommended)
-You now have a clean Arch installation with several applications and yaourt and custom fonts installed.
-
-Next steps will guide you through the installion process of an infinality bundle. I'm not sure if you really need it now, cause fonts on my Arch install look really good. I'm not sure about Java, though.
-
-1. `sudo nano /etc/pacman.conf`
-  1. Add following lines
-  ```
-[infinality-bundle]		
-Server = http://bohoomil.com/repo/$arch		
-		
-[infinality-bundle-multilib]		
-Server = http://bohoomil.com/repo/multilib/$arch		
-		
-[infinality-bundle-fonts]		
-Server = http://bohoomil.com/repo/fonts
-  ```
-  2. Uncomment [multilib] part.
-2. `sudo dirmngr < /dev/null`		
-3. `sudo pacman-key -r 962DDE58`		
-4. `sudo pacman-key --lsign-key 962DDE58`		
-5. `sudo pacman -Syy infinality-bundle-multilib`
-  1. Install `infinality-bundle` if you are not using x86_64 architecture.
-  2. Press 'y' when promted about conflicts.
-6. `sudo fc-presets set`
-  1. Choose `ms` set
-7. `sudo reboot`
-8. Login under your user.
-
