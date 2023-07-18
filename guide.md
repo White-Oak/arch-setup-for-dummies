@@ -1,41 +1,44 @@
 # Guide
 ## Preinstallation
-1. You will need a partition for your Arch Linux installation and, preferably, a swap partition. It is very easy to do before installation, but if you are already loaded into Arch ISO, or doing installation on a new hardware, you can follow these instructions.
-2. `lsblk`. Determine what devices do you have. `/dev/sda` is usually the first SATA drive `/dev/nvme0n1` is usually the first NVMe memory drive (those are SSDs on a motherboard).
-3. `parted device` where `device` is a desired devic to have your installation on.
-4. Run only if you have an empty (unpartitioned) drive: `mklabel msdos`, where `msdos` is a MBR partition type.
-5. `mkpart primary ext4 0% 100%`
-6. `quit`
-7. `lsblk` to check what is there.
+
+You will need a partition for your Arch Linux installation and, optionally, a swap partition. It is very easy to do before installation, but if you are already loaded into Arch ISO, or doing installation on a new hardware, you can follow these instructions upon loading Arch ISO.
+
+2. `lsblk`. Determine what devices do you have. `/dev/sda` is usually the first SATA drive `/dev/nvme0n1` is usually the first NVMe memory drive (those are SSDs on a motherboard, M.2).
+3. `parted device` where `device` is a desired device to have your installation on.
+4. Run only if you have an empty (unpartitioned) drive: `mklabel gpt`, where `gpt` is a GPT partition type (UEFI, recommended).
+5. `mkpart "EfFI system partition" fat32 1MiB 500MiB
+6. `set 1 esp on`
+7. `mkpart "Arch" ext4 501MiB 100%`
+8. `quit`
+9. `lsblk` to check what is there. 1st part is for EFI and 2nd part is for your Linux installation.
 
 ## Basic
-1. Make sure you know what your to-be-linux and swap partitions are.
-  1. We will name them /dev/sdaX — linux partion and /dev/sdaY — swap partition.
-2. Load arch-linux from your flash drive. Whether it is USB stick or CD-R image.
-3. Upon loading of the live image execute next commands.
-4. `wifi-menu` if you are wifi user
+1. Load arch-linux from your flash drive. Whether it is USB stick or CD-R image.
+2. `setfont ter-132b` to set the font bigger if you need it (list is in `/usr/share/kbd/consolefonts`).
+3. Make sure you know what your to-be-linux and EFI partitions are. Check Preinstallation section if needed.
+  1. You can check `lsblk` or `df` outputs if not sure.
+  2. I will call/dev/sdaX — linux partion.
+4. `wifi-menu` if you are a wifi user
   1. Choose your network. OK.
   2. OK.
   3. Enter your password for the network. OK.
   4. Wait a little till 'root@archlinuxiso' caption appears.
   5. Don't continue if you cannot connect to a network.
-5. `mkswap /dev/sdaY`
-6. `swapon /dev/sdaY`
-7. `mkfs.ext4 /dev/sdaX`
-  1. Make sure you are formatting the right partition! **There is NO turning back from this point!**. If yes — enter 'y' when promted.
-8. `mount /dev/sdaX /mnt`
-9. `pacstrap /mnt base base-devel`
+5. `mkfs.fat -F 32 /dev/sdaY` (it's your EFI partition).
+  1. Make sure you are formatting the right partitions! **There is NO turning back from this point!**. If yes — enter 'y' when promted.
+6. `mkfs.ext4 /dev/sdaX`
+7. `mount /dev/sdaX /mnt`
+8. `mount /dev/sdaY /mnt/boot`
+9. `pacstrap /mnt base base-devel git wget reflector NetworkManager`
   1. Go take a cup of tea. It takes time.
 10. `genfstab -p /mnt >> /mnt/etc/fstab`
 11. `arch-chroot /mnt`
   1. If promted with sh-4.3 — you are on the right way.
-12. `pacman -S grub os-prober` for MBR loader and add more:
+12. `pacman -S {name}` install more packages to your liking.
   1. `dialog wpa_supplicant` -- for wifi access
-  2. `wget` -- we will need this to get yaourt
-  3. `reflector` -- this only updates mirror list, pretty optional
   4. `fish` -- this a cool and nice looking shell alternative to bash. I recommend it, but it's not POSIX!
-13. `reflector --latest 50 --number 10 --sort rate --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
-14. `useradd -m -G wheel -s /usr/bin/fish IMYA` or `useradd -m -G wheel IMYA` if you haven't installed fish
+13. `reflector -l 30 -f 30 --number 10 --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
+14. `useradd -m -G wheel -s /usr/bin/fish NAME` or `useradd -m -G wheel NAME` if you haven't installed fish
 15. `passwd`
   1. Enter password for root.
 16. `passwd IMYA`
@@ -56,20 +59,50 @@
 19. `echo LANG=en_US.UTF-8 > /etc/locale.conf`
 20. `locale-gen`
 21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`, instead of `Europe/Moscow` use your own timezone!
-22. `grub-install --target=i386-pc --recheck --debug /dev/sda`
-23. `grub-mkconfig -o /boot/grub/grub.cfg`
+22. `bootcltl install`
+  1. `systemctl enable --now systemd-boot-update.service`
+  2. `cp /usr/share/systemd/bootctl/loader.conf /boot/loader/loader.conf`
+  3. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf`
 25. `echo compname > /etc/hostname`if you need to change your host name for some reason
-26. `exit`
-27. `reboot`
-28. Take your flash drive out!
-29. Login under your user.
+26.  Install yay.
+  ```bash
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+  ```
+27. `exit`
+28. `reboot`
+29. Take your flash drive out!
+30. Login under your user.
+
+## Multiboot
+
+If your Windows system is on the same drive - systemd-boot will handle everything for you. Otherwise there are some additional steps.
+
+1. `pacman -S edk2-shell`
+2. `cp /usr/share/edk2-shell/x64/Shell.efi /boot/shellx64.efi` 
+3. run `blkid` and take a note (a photo for ex) of PARTUUID for your Windows drive
+4. Reboot into EFI Shell (option will be available in systemd-boot menu)
+5. Run `map` and take a not of the FS alias for your Windows drive (ex: HD0a66666a2)
+6. `exit` and reboot into Arch
+7. create a `/boot/windows.nsh` file
+  ```
+  HD0a66666a2:EFI\Microsoft\Boot\Bootmgfw.efi
+  ```
+8. create a `/boot/loader/entries/windows.conf`
+  ```
+title  Windows
+efi     /shellx64.efi
+options -nointerrupt -noconsolein -noconsoleout windows.nsh
+  ```
 
 ## X and DE setup
-You now have a clean Arch installation. Next steps are for X setup with DE.
+You now have a clean Arch installation. Next steps are for X setup with DE. You can of cource do these steps in the previous section under your `arch-chroot` section.
 
 1. Internet:
   1. `sudo wifi-menu` for Wi-Fi
-  2. `sudo systemctl enable --now dhcpcd@.service` for Ethernet
+  2. `sudo systemctl start dhcpcd@.service` for Ethernet
 2. `sudo pacman -S xorg-server xorg-server-utils xorg-apps sddm chromium`
   1. For NVIDIA users: When asked to choose between nvidia drivers. Choose `nvidia-libgl`. Run `sudo pacman -S nvidia`.
   2. For Intel GPU users: run `sudo pacman -S xf86-video-intel mesa-libgl libva` 
@@ -82,46 +115,3 @@ You now have a clean Arch installation. Next steps are for X setup with DE.
   1. `sudo pacman -S NetworkManager` if it is not installed yet.
 5. `sudo reboot`
 6. Login under your user. Use networks applet on DE panel to configure network (if you installed NetworkManager).
-
-## Yaourt installation
-
-1. `mkdir aurs-tmp`
-2. `cd aurs-tmp`
-3. Install package-query from arch AURs:
-  1. `wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz`
-  2. `tar -xvzf package-query.tar.gz`
-  3. `cd package-query`
-  4. `makepkg -si`
-  5. `cd ..`
-4. install yaourt packages:
-  1. `wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz`
-  2. `tar -xvzf yaourt.tar.gz`
-  3. `cd yaourt`
-  4. `makepkg -si`
-  5. `cd ..`
-5. `cd ..`
-6. `rm -rf aurs-temp`
-
-## Custom fonts installation
-You now have a clean Arch installation with Plasma 5 with pre-installed Dolphin (file manager), yakuake (drop-down terminal, press F12 in Plasma) and Chromium (web browser).
-
-It is easier to perform next steps using DE, web browser (i.e. Chromium) and terminal with copy-paste feature supported (i.e. yakuake or konsole).
-
-1. Run yakuake or press F12.
-2. Run following to change your shortcut to change languages (if you need one):
-  1. `sudo nano /etc/X11/xorg.conf.d/20-keyboard-layout.conf`
-  2. Add following lines. Switching will be on Caps lock. To switch on Ctrl-Shift, for example, use `Option "XkbOptions" "grp:ctrl_shift_toggle"`:
-  ```
-Section "InputClass"
-	Identifier             "keyboard-layout"
-	MatchIsKeyboard        "on"
-	Option "XkbLayout" "us,ru"
-	Option "XkbOptions" "grp:caps_toggle"
-EndSection
-  ```
-3. `sudo pacman -S ttf-bitstream-vera ttf-inconsolata ttf-ubuntu-font-family ttf-dejavu ttf-freefont ttf-linux-libertine ttf-liberation`
-4. For Microsoft fonts:
-  1. `yaourt -S ttf-ms-fonts ttf-vista-fonts ttf-monaco ttf-qurancomplex-fonts --noconfirm`
-5. `sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d`
-6. `sudo reboot`
-7. Login under your user.
