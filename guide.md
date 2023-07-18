@@ -45,13 +45,11 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 16. `passwd IMYA`
   b. Enter password for your user.
 17. `nano /etc/sudoers`
-  a. Search for:
+  a. Search and uncomment 2nd line:
 ```
 ## Uncomment to allow members of group wheel to execute any command
 # %wheel ALL=(ALL) ALL
 ```
-  b. Uncomment `%wheel ALL=(ALL) ALL`
-  c. Save. (Ctrl-X, y, enter)
 18. `nano /etc/locale.gen`
   a. Uncomment next line (for Russian): `ru_RU.UTF-8   UTF-8`
   b. Uncomment next line (for English): `en_US.UTF-8   UTF-8`
