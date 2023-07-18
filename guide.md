@@ -32,20 +32,20 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 8. `mount /dev/sdaY /mnt/boot`
 9. `pacstrap /mnt base base-devel git wget reflector NetworkManager`
   a. Go take a cup of tea. It takes time.
-10. `genfstab -p /mnt >> /mnt/etc/fstab`
+10. `genfstab -U -p /mnt >> /mnt/etc/fstab`
 11. `arch-chroot /mnt`
-  a. If promted with sh-4.3 — you are on the right way.
+  a. If promted with a different shell — you are on the right way.
 12. `pacman -S {name}` install more packages to your liking.
   a. `dialog wpa_supplicant` -- for wifi access
   b. `fish` -- this a cool and nice looking shell alternative to bash. I recommend it, but it's not POSIX!
-13. `reflector -l 30 -f 30 --number 10 --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
+13. `reflector -l 30 -f 3 --protocol https --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
 14. `useradd -m -G wheel -s /usr/bin/fish NAME` or `useradd -m -G wheel NAME` if you haven't installed fish
 15. `passwd`
   a. Enter password for root.
 16. `passwd IMYA`
   b. Enter password for your user.
-17. `nano /etc/sudoers`
-  a. Search and uncomment 2nd line:
+17. `visudo`
+  a. press `G` to go the end of the file, than `i` and navigate using arrows to the following text. delete `# ` frm the 2nd line. Then `ESC` and `ZZ`
 ```
 ## Uncomment to allow members of group wheel to execute any command
 # %wheel ALL=(ALL) ALL
@@ -60,15 +60,20 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`, instead of `Europe/Moscow` use your own timezone!
 22. `bootcltl install`
   a. `systemctl enable --now systemd-boot-update.service`
-  b. `cp /usr/share/systemd/bootctl/loader.conf /boot/loader/loader.conf`
-  c. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf`
+  b. `cp -f /usr/share/systemd/bootctl/loader.conf /boot/loader/loader.conf`
+  c. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf` EDIT this file to have `options root="PARTLABEL=Arch" add_efi_memmap rw` at the end
 25. `echo compname > /etc/hostname`if you need to change your host name for some reason
 26.  Install yay.
   ```bash
 pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay-bin.git
 cd yay-bin
+chown NAME:NAME -R .
+su NAME
 makepkg -si
+exit
+cd ..
+rm -rf yay-bin
   ```
 27. `exit`
 28. `reboot`
