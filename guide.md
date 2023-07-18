@@ -3,66 +3,67 @@
 
 You will need a partition for your Arch Linux installation and, optionally, a swap partition. It is very easy to do before installation, but if you are already loaded into Arch ISO, or doing installation on a new hardware, you can follow these instructions upon loading Arch ISO.
 
-2. `lsblk`. Determine what devices do you have. `/dev/sda` is usually the first SATA drive `/dev/nvme0n1` is usually the first NVMe memory drive (those are SSDs on a motherboard, M.2).
-3. `parted device` where `device` is a desired device to have your installation on.
-4. Run only if you have an empty (unpartitioned) drive: `mklabel gpt`, where `gpt` is a GPT partition type (UEFI, recommended).
-5. `mkpart "EfFI system partition" fat32 1MiB 500MiB
-6. `set 1 esp on`
-7. `mkpart "Arch" ext4 501MiB 100%`
-8. `quit`
-9. `lsblk` to check what is there. 1st part is for EFI and 2nd part is for your Linux installation.
+1. `lsblk`. Determine what devices do you have. `/dev/sda` is usually the first SATA drive `/dev/nvme0n1` is usually the first NVMe memory drive (those are SSDs on a motherboard, M.2).
+2. `parted device` where `device` is a desired device to have your installation on.
+3. Run only if you have an empty (unpartitioned) drive: `mklabel gpt`, where `gpt` is a GPT partition type (UEFI, recommended).
+4. `mkpart "EfFI system partition" fat32 1MiB 500MiB`
+5. `set 1 esp on`
+6. `mkpart "Arch" ext4 501MiB 100%`
+7. `quit`
+8. `lsblk` to check what is there. 1st part is for EFI and 2nd part is for your Linux installation.
 
 ## Basic
+
 1. Load arch-linux from your flash drive. Whether it is USB stick or CD-R image.
 2. `setfont ter-132b` to set the font bigger if you need it (list is in `/usr/share/kbd/consolefonts`).
 3. Make sure you know what your to-be-linux and EFI partitions are. Check Preinstallation section if needed.
-  1. You can check `lsblk` or `df` outputs if not sure.
-  2. I will call/dev/sdaX — linux partion.
+  a. You can check `lsblk` or `df` outputs if not sure.
+  b. I will call/dev/sdaX — linux partion.
 4. `wifi-menu` if you are a wifi user
-  1. Choose your network. OK.
-  2. OK.
-  3. Enter your password for the network. OK.
-  4. Wait a little till 'root@archlinuxiso' caption appears.
-  5. Don't continue if you cannot connect to a network.
+  a. Choose your network. OK.
+  b. OK.
+  c. Enter your password for the network. OK.
+  d. Wait a little till 'root@archlinuxiso' caption appears.
+  e. Don't continue if you cannot connect to a network.
 5. `mkfs.fat -F 32 /dev/sdaY` (it's your EFI partition).
-  1. Make sure you are formatting the right partitions! **There is NO turning back from this point!**. If yes — enter 'y' when promted.
+  a. Make sure you are formatting the right partitions! **There is NO turning back from this point!**. If yes — enter 'y' when promted.
 6. `mkfs.ext4 /dev/sdaX`
 7. `mount /dev/sdaX /mnt`
 8. `mount /dev/sdaY /mnt/boot`
 9. `pacstrap /mnt base base-devel git wget reflector NetworkManager`
-  1. Go take a cup of tea. It takes time.
+  a. Go take a cup of tea. It takes time.
 10. `genfstab -p /mnt >> /mnt/etc/fstab`
 11. `arch-chroot /mnt`
-  1. If promted with sh-4.3 — you are on the right way.
+  a. If promted with sh-4.3 — you are on the right way.
 12. `pacman -S {name}` install more packages to your liking.
-  1. `dialog wpa_supplicant` -- for wifi access
-  4. `fish` -- this a cool and nice looking shell alternative to bash. I recommend it, but it's not POSIX!
+  a. `dialog wpa_supplicant` -- for wifi access
+  b. `fish` -- this a cool and nice looking shell alternative to bash. I recommend it, but it's not POSIX!
 13. `reflector -l 30 -f 30 --number 10 --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
 14. `useradd -m -G wheel -s /usr/bin/fish NAME` or `useradd -m -G wheel NAME` if you haven't installed fish
 15. `passwd`
-  1. Enter password for root.
+  a. Enter password for root.
 16. `passwd IMYA`
-  1. Enter password for your user.
+  b. Enter password for your user.
 17. `nano /etc/sudoers`
-  1. Search for:
-  ```
+  a. Search for:
+```
 ## Uncomment to allow members of group wheel to execute any command
 # %wheel ALL=(ALL) ALL
-  ```
-  2. Uncomment `%wheel ALL=(ALL) ALL`
-  3. Save. (Ctrl-X, y, enter)
+```
+  b. Uncomment `%wheel ALL=(ALL) ALL`
+  c. Save. (Ctrl-X, y, enter)
 18. `nano /etc/locale.gen`
-  1. Uncomment next line (for Russian): `ru_RU.UTF-8   UTF-8`
-  2. Uncomment next line (for English): `en_US.UTF-8   UTF-8`
-  3. Save. (Ctrl-X, y, enter)
-  4. You can just use `sed` instead of course: `sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen`
+  a. Uncomment next line (for Russian): `ru_RU.UTF-8   UTF-8`
+  b. Uncomment next line (for English): `en_US.UTF-8   UTF-8`
+  c. Save. (Ctrl-X, y, enter)
+  d. You can just use `sed` instead of course: `sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen`
 19. `echo LANG=en_US.UTF-8 > /etc/locale.conf`
 20. `locale-gen`
 21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`, instead of `Europe/Moscow` use your own timezone!
 22. `bootcltl install`
-  1. `systemctl enable --now systemd-boot-update.service`
-  2. `cp /usr/share/systemd/bootctl/loader.conf /boot/loader/loader.conf`
-  3. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf`
+  a. `systemctl enable --now systemd-boot-update.service`
+  b. `cp /usr/share/systemd/bootctl/loader.conf /boot/loader/loader.conf`
+  c. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf`
 25. `echo compname > /etc/hostname`if you need to change your host name for some reason
 26.  Install yay.
   ```bash
