@@ -4,10 +4,11 @@ Hibernation is not an option by default and requires some simple work to establi
 
 1. Confgiure your boot loader.
   1. With GRUB:
+    * get your swap partition UUID `lsblk -no UUID /dev/SWAP` where SWAP is your swap partition.
     * `sudo nano /etc/default/grub`
     * Find the string containing `GRUB_CMDLINE_LINUX_DEFAULT='quiet'`. (Instead of quiet there can be anything)
-    * Insert `resume=/dev/SWAP` in quotes, where SWAP is your swap partition.
-    * My example is `GRUB_CMDLINE_LINUX_DEFAULT='quiet resume=/dev/sda5'`.
+    * Insert `resume=UUID=yourSwapPartitionUUID` in quotes.
+    * My example is `GRUB_CMDLINE_LINUX_DEFAULT='quiet resume=UUID=c55290c5-c2d9-4135-b0d7-498eb22b653d'`.
     * Save the file (`Ctrl-x, y, Enter`)
   2. Run `sudo grub-mkconfig -o /boot/grub/grub.cfg` to generate grub config.
 2. Configure config file of initramfs generator:
