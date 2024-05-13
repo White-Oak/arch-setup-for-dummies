@@ -1,7 +1,7 @@
 SSH is a very powerfull tool, for example to pull/changes to remote git repositories w/o having to authorize each time.
 
 1. Ensure you don't have SSH key generated: `cat ~/.ssh/id_rsa.pub`. If this prints something skip to step 4 or 5.
-2. Ensure you have openssh installed: `yaourt -S openssh`.
+2. Ensure you have openssh installed: `pacman -S openssh`.
 3. `ssh-keygen -t rsa -C "YOUR@EMAIL.com"` will prompt for location and passphrase.
 4. Now you need to enable SSH agent as a service. I found adding it as a systemd service is the most convinient.
   1. `mkdir -p ~/.config/systemd/user/`
