@@ -6,45 +6,48 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 1. `lsblk`. Determine what devices do you have. `/dev/sda` is usually the first SATA drive `/dev/nvme0n1` is usually the first NVMe memory drive (those are SSDs on a motherboard, M.2).
 2. `parted device` where `device` is a desired device to have your installation on.
 3. Run only if you have an empty (unpartitioned) drive: `mklabel gpt`, where `gpt` is a GPT partition type (UEFI, recommended).
-4. `mkpart "EfFI system partition" fat32 1MiB 500MiB`
+4. `mkpart "EFI system partition" fat32 1MiB 2GiB`
 5. `set 1 esp on`
-6. `mkpart "Arch" ext4 501MiB 100%`
+6. `mkpart "Arch" ext4 2GiB 100%`
 7. `quit`
 8. `lsblk` to check what is there. 1st part is for EFI and 2nd part is for your Linux installation.
 
 ## Basic
 
-1. Load arch-linux from your flash drive. Whether it is USB stick or CD-R image.
 2. `setfont ter-132b` to set the font bigger if you need it (list is in `/usr/share/kbd/consolefonts`).
 3. Make sure you know what your to-be-linux and EFI partitions are. Check Preinstallation section if needed.
-  a. You can check `lsblk` or `df` outputs if not sure.
-  b. I will call/dev/sdaX — linux partion.
+    1. You can check `lsblk` or `df` outputs if not sure.
+    2. I will call/dev/sdaX — linux partion.
 4. `wifi-menu` if you are a wifi user
-  a. Choose your network. OK.
-  b. OK.
-  c. Enter your password for the network. OK.
-  d. Wait a little till 'root@archlinuxiso' caption appears.
-  e. Don't continue if you cannot connect to a network.
+    1. Choose your network. OK.
+    2. OK.
+    3. Enter your password for the network. OK.
+    4. Wait a little till 'root@archlinuxiso' caption appears.
+    5. Don't continue if you cannot connect to a network.
 5. `mkfs.fat -F 32 /dev/sdaY` (it's your EFI partition).
-  a. Make sure you are formatting the right partitions! **There is NO turning back from this point!**. If yes — enter 'y' when promted.
+    1. Make sure you are formatting the right partitions! **There is NO turning back from this point!**. If yes — enter 'y' when promted.
 6. `mkfs.ext4 /dev/sdaX`
-7. `mount /dev/sdaX /mnt`
-8. `mount /dev/sdaY /mnt/boot`
-9. `pacstrap /mnt base base-devel git wget reflector NetworkManager`
-  a. Go take a cup of tea. It takes time.
-10. `genfstab -U -p /mnt >> /mnt/etc/fstab`
-11. `arch-chroot /mnt`
-  a. If promted with a different shell — you are on the right way.
+7. `mount /dev/sdaX mnt`
+8. `mount /dev/sdaY mnt/boot`
+9. `pacstrap mnt base base-devel git wget less vim reflector NetworkManager man`
+    1. Go take a cup of tea. It takes time.
+10. `genfstab -U -p mnt >> mnt/etc/fstab`
+11. `arch-chroot mnt`
+  a. If prompted with a different shell — you are on the right way.
 12. `pacman -S {name}` install more packages to your liking.
   a. `dialog wpa_supplicant` -- for wifi access
   b. `fish` -- this a cool and nice looking shell alternative to bash. I recommend it, but it's not POSIX!
-13. `reflector -l 30 -f 3 --protocol https --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
-14. `useradd -m -G wheel -s /usr/bin/fish NAME` or `useradd -m -G wheel NAME` if you haven't installed fish
-15. `passwd`
+13. `reflector -l 50 -f 5 --protocol https --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
+    1. You can play around with parameters and add `-C 'COUNTRY'` to get results better suited for you.
+    2. If you know what you're doing, you can run `reflector` before `pacstrap` and `cp -f {,mnt}/etc/pacman.d/mirrorlist`
+14. I recommend editing `echo -e "Color\nParallelDownloads = 5" > /etc/pacman.d/user-friendly.conf` to enable some user-friendly options for pacman.
+15. I also recommend adding `echo "PKGEXT='.pkg.tar'" > /etc/makepkg.conf.d/no-compression.conf` to disable compression for AUR packages.
+16. `useradd -m -G wheel -s /usr/bin/fish NAME` or `useradd -m -G wheel NAME` if you haven't installed fish
+17. `passwd`
   a. Enter password for root.
-16. `passwd IMYA`
+18. `passwd NAME`
   b. Enter password for your user.
-17. `visudo`
+19. `EDITOR=vim visudo`
   a. press `G` to go the end of the file, than `i` and navigate using arrows to the following text. delete `# ` frm the 2nd line. Then `ESC` and `ZZ`
 ```
 ## Uncomment to allow members of group wheel to execute any command
@@ -59,9 +62,9 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 20. `locale-gen`
 21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`, instead of `Europe/Moscow` use your own timezone!
 22. `bootcltl install`
-  a. `systemctl enable --now systemd-boot-update.service`
+  a. `systemctl enable systemd-boot-update.service`
   b. `cp -f /usr/share/systemd/bootctl/loader.conf /boot/loader/loader.conf`
-  c. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf` EDIT this file to have `options root="PARTLABEL=Arch" add_efi_memmap rw` at the end
+  c. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf` EDIT this file to have `options root=PARTLABEL=Arch add_efi_memmap rw` at the end
 25. `echo compname > /etc/hostname`if you need to change your host name for some reason
 26.  Install yay.
   ```bash
@@ -107,15 +110,17 @@ You now have a clean Arch installation. Next steps are for X setup with DE. You 
 1. Internet:
   1. `sudo wifi-menu` for Wi-Fi
   2. `sudo systemctl start dhcpcd@.service` for Ethernet
-2. `sudo pacman -S xorg-server xorg-server-utils xorg-apps sddm chromium`
-  1. For NVIDIA users: When asked to choose between nvidia drivers. Choose `nvidia-libgl`. Run `sudo pacman -S nvidia`.
-  2. For Intel GPU users: run `sudo pacman -S xf86-video-intel mesa-libgl libva` 
-  3. For Mixed users: run `sudo pacman -S bumblebee`
+2. `sudo pacman -S sddm firefox`
+  1. For NVIDIA users: run `sudo pacman -S nvidia`.
 3. Install DE.
-  1. Plasma: `sudo pacman -S plasma yakuake dolphin gtk-theme-orion`
-  2. XFCE: `sudo pacman -S xfce4`
+  1. Plasma: `sudo pacman -S plasma-meta yakuake`
+4. Choose `noto` for your font options, other choices can be defaults.
 3. `sudo systemctl enable sddm.service`
 4. `sudo systemctl enable NetworkManager` only if you connect through Wi-Fi
   1. `sudo pacman -S NetworkManager` if it is not installed yet.
 5. `sudo reboot`
 6. Login under your user. Use networks applet on DE panel to configure network (if you installed NetworkManager).
+
+#### Short DE installation command
+
+`sudo pacman -S sddm firefox nvidia plasma-meta yakuake`
