@@ -33,10 +33,10 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
     1. Go take a cup of tea. It takes time.
 10. `genfstab -U -p mnt >> mnt/etc/fstab`
 11. `arch-chroot mnt`
-  a. If prompted with a different shell — you are on the right way.
+    1. If prompted with a different shell — you are on the right way.
 12. `pacman -S {name}` install more packages to your liking.
-  a. `dialog wpa_supplicant` -- for wifi access
-  b. `fish` -- this a cool and nice looking shell alternative to bash. I recommend it, but it's not POSIX!
+    1. `dialog wpa_supplicant` -- for wifi access
+    2. `fish` -- this a cool and nice looking shell alternative to bash. I recommend it, but it's not POSIX!
 13. `reflector -l 50 -f 5 --protocol https --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
     1. You can play around with parameters and add `-C 'COUNTRY'` to get results better suited for you.
     2. If you know what you're doing, you can run `reflector` before `pacstrap` and `cp -f {,mnt}/etc/pacman.d/mirrorlist`
@@ -44,27 +44,27 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 15. I also recommend adding `echo "PKGEXT='.pkg.tar'" > /etc/makepkg.conf.d/no-compression.conf` to disable compression for AUR packages.
 16. `useradd -m -G wheel -s /usr/bin/fish NAME` or `useradd -m -G wheel NAME` if you haven't installed fish
 17. `passwd`
-  a. Enter password for root.
+    1. Enter password for root.
 18. `passwd NAME`
-  b. Enter password for your user.
+    2. Enter password for your user.
 19. `EDITOR=vim visudo`
-  a. press `G` to go the end of the file, than `i` and navigate using arrows to the following text. delete `# ` frm the 2nd line. Then `ESC` and `ZZ`
+    1. press `G` to go the end of the file, than `i` and navigate using arrows to the following text. delete `# ` frm the 2nd line. Then `ESC` and `ZZ`
 ```
 ## Uncomment to allow members of group wheel to execute any command
 # %wheel ALL=(ALL) ALL
 ```
 18. `nano /etc/locale.gen`
-  a. Uncomment next line (for Russian): `ru_RU.UTF-8   UTF-8`
-  b. Uncomment next line (for English): `en_US.UTF-8   UTF-8`
-  c. Save. (Ctrl-X, y, enter)
-  d. You can just use `sed` instead of course: `sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen`
+    1. Uncomment next line (for Russian): `ru_RU.UTF-8   UTF-8`
+    2. Uncomment next line (for English): `en_US.UTF-8   UTF-8`
+    3. Save. (Ctrl-X, y, enter)
+    4. You can just use `sed` instead of course: `sed -i 's/#\(en_US\.UTF-8\)/\1/' /etc/locale.gen`
 19. `echo LANG=en_US.UTF-8 > /etc/locale.conf`
 20. `locale-gen`
 21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`, instead of `Europe/Moscow` use your own timezone!
 22. `bootcltl install`
-  a. `systemctl enable systemd-boot-update.service`
-  b. `cp -f /usr/share/systemd/bootctl/loader.conf /boot/loader/loader.conf`
-  c. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf` EDIT this file to have `options root=PARTLABEL=Arch add_efi_memmap rw` at the end
+    1. `systemctl enable systemd-boot-update.service`
+    2. `cp -f /usr/share/systemd/bootctl/loader.conf /boot/loader/loader.conf`
+    3. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf` EDIT this file to have `options root=PARTLABEL=Arch add_efi_memmap rw` at the end
 25. `echo compname > /etc/hostname`if you need to change your host name for some reason
 26.  Install yay.
   ```bash
