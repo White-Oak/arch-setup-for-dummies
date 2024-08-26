@@ -61,7 +61,7 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 19. `echo LANG=en_US.UTF-8 > /etc/locale.conf`
 20. `locale-gen`
 21. `ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime`, instead of `Europe/Moscow` use your own timezone!
-22. `bootcltl install`
+22. `bootctl install`
     1. `systemctl enable systemd-boot-update.service`
     2. `cp -f /usr/share/systemd/bootctl/loader.conf /boot/loader/loader.conf`
     3. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf` EDIT this file to have `options root=PARTLABEL=Arch add_efi_memmap rw` at the end
