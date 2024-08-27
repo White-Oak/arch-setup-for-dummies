@@ -1,4 +1,4 @@
-#Hibernatig on Arch Linux
+# Hibernatig on Arch Linux
 
 Hibernation is not an option by default and requires some simple work to establish.
 
