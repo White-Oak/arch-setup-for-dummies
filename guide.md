@@ -29,7 +29,7 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 6. `mkfs.ext4 /dev/sdaX`
 7. `mount /dev/sdaX mnt`
 8. `mount /dev/sdaY mnt/boot`
-9. `pacstrap mnt base base-devel git wget less vim reflector NetworkManager man`
+9. `pacstrap mnt linux base base-devel git wget less vim reflector NetworkManager man`
     1. Go take a cup of tea. It takes time.
 10. `genfstab -U -p mnt >> mnt/etc/fstab`
 11. `arch-chroot mnt`
@@ -65,6 +65,7 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
     1. `systemctl enable systemd-boot-update.service`
     2. `cp -f /usr/share/systemd/bootctl/loader.conf /boot/loader/loader.conf`
     3. `cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries/arch.conf` EDIT this file to have `options root=PARTLABEL=Arch add_efi_memmap rw` at the end
+    4. Check output of `bootctl`! It should contain no errors (red text)
 25. `echo compname > /etc/hostname`if you need to change your host name for some reason
 26.  Install yay.
   ```bash
