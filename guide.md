@@ -27,12 +27,12 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 5. `mkfs.fat -F 32 /dev/sdaY` (it's your EFI partition).
     1. Make sure you are formatting the right partitions! **There is NO turning back from this point!**. If yes — enter 'y' when promted.
 6. `mkfs.ext4 /dev/sdaX`
-7. `mount /dev/sdaX mnt`
-8. `mount /dev/sdaY mnt/boot`
+7. `mount /dev/sdaX /mnt`
+8. `mount /dev/sdaY /mnt/boot`
 9. `pacstrap mnt linux base base-devel git wget less vim reflector NetworkManager man`
     1. Go take a cup of tea. It takes time.
-10. `genfstab -U -p mnt >> mnt/etc/fstab`
-11. `arch-chroot mnt`
+10. `genfstab -U -p mnt >> /mnt/etc/fstab`
+11. `arch-chroot /mnt`
     1. If prompted with a different shell — you are on the right way.
 12. `pacman -S {name}` install more packages to your liking.
     1. `dialog wpa_supplicant` -- for wifi access
