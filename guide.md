@@ -29,9 +29,9 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 6. `mkfs.ext4 /dev/sdaX`
 7. `mount /dev/sdaX /mnt`
 8. `mount /dev/sdaY /mnt/boot`
-9. `pacstrap mnt linux base base-devel git wget less vim reflector NetworkManager man`
+9. `pacstrap .mnt linux base base-devel git wget less vim reflector NetworkManager man`
     1. Go take a cup of tea. It takes time.
-10. `genfstab -U -p mnt >> /mnt/etc/fstab`
+10. `genfstab -U -p .mnt >> /mnt/etc/fstab`
 11. `arch-chroot /mnt`
     1. If prompted with a different shell — you are on the right way.
 12. `pacman -S {name}` install more packages to your liking.
