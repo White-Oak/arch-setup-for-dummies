@@ -92,11 +92,12 @@ If your Windows system is on the same drive - systemd-boot will handle everythin
 2. `cp /usr/share/edk2-shell/x64/Shell.efi /boot/shellx64.efi` 
 3. run `blkid` and take a note (a photo for ex) of PARTUUID for your Windows drive
 4. Reboot into EFI Shell (option will be available in systemd-boot menu)
-5. Run `map` and take a not of the FS alias for your Windows drive (ex: HD0a66666a2)
-6. `exit` and reboot into Arch
-7. create a `/boot/windows.nsh` file
+5. Run `map -b` and take a note of the FS alias for your Windows drive (ex: HD0a66666a2, later `HDALIAS`)
+   1. The line will contain the PARTUUID you've noted above.
+7. `exit` and reboot into Arch
+8. create a `/boot/windows.nsh` file
   ```
-  HD0a66666a2:EFI\Microsoft\Boot\Bootmgfw.efi
+  HDALIAS:EFI\Microsoft\Boot\Bootmgfw.efi
   ```
 8. create a `/boot/loader/entries/windows.conf`
   ```
