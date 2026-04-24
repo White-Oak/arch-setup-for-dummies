@@ -40,7 +40,7 @@ You will need a partition for your Arch Linux installation and, optionally, a sw
 13. `reflector -l 50 -f 5 --protocol https --save /etc/pacman.d/mirrorlist --verbose` if you installed reflector
     1. You can play around with parameters and add `-C 'COUNTRY'` to get results better suited for you.
     2. If you know what you're doing, you can run `reflector` before `pacstrap` and `cp -f {,mnt}/etc/pacman.d/mirrorlist`
-14. I recommend editing `echo -e "Color\nParallelDownloads = 5" > /etc/pacman.d/user-friendly.conf` to enable some user-friendly options for pacman.
+14. I recommend uncommenting `Color` in `/etc/pacman.conf` to enable some user-friendly options for pacman.
 15. I also recommend adding `echo "PKGEXT='.pkg.tar'" > /etc/makepkg.conf.d/no-compression.conf` to disable compression for AUR packages.
 16. `useradd -m -G wheel -s /usr/bin/fish NAME` or `useradd -m -G wheel NAME` if you haven't installed fish
 17. `passwd`
